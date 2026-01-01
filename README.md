@@ -223,15 +223,15 @@ BUSL-1.1 (Business Source License)
 2. Testnet phase: Community testing encouraged
 3. Mainnet: Open to governance proposals (if implemented)
 
-For security issues: Please email [security@dybl.foundation] (or your email)
+For security issues: Please email [dybl77@proton.me] (or your email)
 
 ---
 
 ## 📞 Contact & Community
 
 - **Twitter/X:** [@DYBL777](https://twitter.com/DYBL777) (or your handle)
-- **Discord:** Coming soon
-- **Email:** contact@dybl.foundation (or your email)
+- **Discord:** dybl777
+- **Email:** dybl77@proton.me
 - **Website:** Coming soon
 
 **Founded by:** Independent creator/therapist with 8 years blockchain research  
