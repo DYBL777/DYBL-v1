@@ -426,7 +426,7 @@ Just pure innovation, open-source code, and a commitment to building something t
 ## Contact
 
 - **GitHub:** [github.com/DYBL777](https://github.com/DYBL777)
-- **Email:** contact@dybl.foundation *(update with your actual email)*
+- **Email:** dybl7@proton.me
 - **Twitter/X:** [@DYBL777](https://twitter.com/DYBL777) *(if you have one)*
 
 ---
