@@ -507,7 +507,8 @@ contract Lettery is VRFConsumerBaseV2, Ownable, ReentrancyGuard {
         
         emit TicketBought(msg.sender, userGuess, currentWeek);
     }
-
+    /// @notice DEPRECATED - Do not use. Use buyTicket() instead.
+    /// @dev Will be removed in V1.3. All users should buy tickets to participate.
     function depositSavings() external nonReentrant {
         if (drawPhase != DrawPhase.IDLE) revert DrawInProgress();
         
