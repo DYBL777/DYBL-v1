@@ -1,59 +1,69 @@
 # DYBL - Decentralised Yield Bearing Legacy
 
-## "The Eternal Seed" — A Prize Pot That Can Only Grow
+**"The Eternal Seed"** — A Self-Sustaining Compounding Primitive for Recurring Payments
 
 ---
 
-### The Problem
+## The Problem
 
 Every lottery resets to zero after a jackpot. Prize pools drain completely. Start over.
 
-### The Solution
+Every subscription payment disappears. No compounding. No shared upside.
 
-**The Eternal Seed** — a set percentage of every payment is retained forever. 
+## The Solution
 
-The pot can only grow. Mathematically impossible to drain. A new way to generate yield.
+**The Eternal Seed** — a configurable percentage of every payment is retained forever.
+
+Under normal operating conditions, the pot floor only rises. A new primitive for yield generation.
 
 ---
 
-## How It Works
+## How It Works For Lettery
 
 | Source | Effect |
 |--------|--------|
-| 10% Eternal Seed | Never paid out, accumulates forever |
-| Ticket Sales | 65% of every ticket adds to pot |
-| Jackpot Rollovers | No winner = stays in pot |
-| Aave Yield | Seed compounds via DeFi |
-| Forfeit Yield | Broken streaks → 50% to pot |
+| **Eternal Seed** | Set % never paid out, accumulates forever |
+| **Ticket Sales** | 65% of every ticket adds to pot |
+| **Jackpot Rollovers** | No winner = stays in pot |
+| **Aave Yield** | Seed compounds via DeFi |
+| **Forfeit Yield** | Broken streaks → 50% to pot |
 
-**There is NO scenario where the pot shrinks long-term.**
+*Note: Not immune to smart contract risk, protocol exploits, or stablecoin depegs. See Risks section.*
 
 ---
 
 ## Tech Stack
 
-- **Solidity ^0.8.24**
+- **Solidity** ^0.8.24
 - **Chainlink VRF** — Provably fair draws
 - **Aave V3** — Yield generation
-- **Architected for Truflation** — Dynamic treasury management (V2)
+- **Architected for V2:** Truflation / Chainlink Automation — Dynamic treasury management
 
 ---
 
 ## Key Features
 
-✅ Eternal Seed — Pot floor only rises  
-✅ Yield-bearing savings — Users earn while they play  
-✅ Pavlov Toggle — Favours savers over gamblers  
-✅ Legacy Mode — Set an heir, pass on your balance  
-✅ Meme Alphabet — 42 characters, viral potential  
+✅ **Eternal Seed** — Pot floor only rises (under normal conditions)
+
+✅ **Yield-bearing savings** — Users earn while they play
+
+✅ **Pavlov Toggle (V2)** — Savers: 100% yield + 100% cashback. Gamblers: yield as tickets + reduced cashback. Game favours savers.
+
+✅ **Legacy Mode** — Set an heir, pass on your balance
+
+✅ **Meme Alphabet** — 42 characters, viral potential
+
+✅ **1-Year Lock** — Prevents gaming as free yield account
+
+✅ **Mulligan** — One free missed week per year
 
 ---
 
 ## Contract
 
-📄 **[Lettery_AuditReady_v1.2.sol](./Lettery_AuditReady_v1.2.sol)** — Latest version
+📄 **Lettery_AuditReady_v1.3.sol** — Current version (audit-ready)
 
-📄 **[Lettery_AuditReady_v1.sol](./Lettery_AuditReady_v1.sol)** — Previous version (archived)
+📄 **archive/** — Previous versions (v1.0, v1.2)
 
 The 7-part mechanism explanation is in the contract header — designed for auditor readability.
 
@@ -61,23 +71,55 @@ The 7-part mechanism explanation is in the contract header — designed for audi
 
 ## Documentation
 
-📄 **[DYBL Whitepaper](./DYBL%20WHITEPAPER.md)**
+📄 [DYBL Whitepaper](./DYBL%20WHITEPAPER.md)
+
+📄 [Changelog](./docs/CHANGELOG_BugFixes.md)
+
+---
+
+## Risks
+
+⚠️ **This is experimental DeFi.** Risks include:
+
+- Smart contract vulnerabilities (not yet professionally audited)
+- Aave protocol dependency (liquidity, exploits)
+- USDC stablecoin risk (depeg)
+- Chainlink VRF dependency
+
+**Status:** Seeking audit from Cyfrin / Chainlink ecosystem partners.
+
+---
+
+## V1.3 Changelog
+
+- ✅ Removed `depositSavings()` — All users must buy tickets to participate
+- ✅ Clarified saver/gambler toggle (V2 feature)
+- ✅ Honest risk assessment in documentation
+
+See full changelog in contract header.
 
 ---
 
 ## License
 
-**BUSL 1.1** — Business Source License  
-Change Date: 10 May 2029  
-After Change Date: MIT
+**BUSL 1.1** — Business Source License
+
+**Change Date:** 10 May 2029
+
+**After Change Date:** MIT
 
 ---
 
 ## Contact
 
-**DYBL Team**  
-🇬🇧 UK
+**DYBL Foundation** 🇬🇧 UK
+
+📧 dybl7@proton.me
+
+🔗 [GitHub](https://github.com/DYBL777/DYBL-v1)
 
 ---
 
-*Not a fork. A new DeFi/TradFi primitive.*
+**Not a fork. A new DeFi primitive.**
+
+*Today's seed becomes tomorrow's fortune.*
