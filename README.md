@@ -1,6 +1,6 @@
 # DYBL - Decentralised Yield Bearing Legacy
 
-**"The Eternal Seed"** — A Self-Sustaining Compounding Primitive
+**"The Eternal Seed"** A Self-Sustaining Compounding Primitive
 
 **Designed for Web2, with Web3 under the hood.**
 
@@ -10,11 +10,11 @@
 
 Traditional lotteries reset to zero after every jackpot. Start over. 
 
-Subscription payments drain away — no compounding, no shared upside.
+Subscription payments drain away, no compounding, no shared upside.
 
 ## The Solution
 
-**The Eternal Seed** — a percentage of every payment is retained forever.
+**The Eternal Seed** a percentage of every payment is retained forever.
 
 Under normal operating conditions, the pot floor only rises.
 
@@ -27,7 +27,7 @@ Under normal operating conditions, the pot floor only rises.
 | 1. User buys ticket | 10% ($0.30 of $3) goes to Seed |
 | 2. Seed stays in pot | NEVER paid out to winners |
 | 3. Seed earns yield | Compounded weekly via Aave |
-| 4. No jackpot winner? | Rolls over — Seed base grows |
+| 4. No jackpot winner? | Rolls over, Seed base grows |
 | 5. User breaks streak? | 50% of their yield → pot |
 
 **Result:** Pot floor can only rise (under normal conditions).
