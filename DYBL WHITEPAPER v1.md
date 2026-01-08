@@ -1,313 +1,531 @@
-> ⚠️ **Note:** This whitepaper is being updated to reflect V1.3 changes. Core mechanism unchanged.
-# The Eternal Seed: A Sustainable Compounding Mechanism for Yield-Bearing Payments & Subscriptions
+# The Eternal Seed: A Self-Sustaining Compounding Primitive for Recurring Payments
 
 **DYBL Foundation**  
-*December 31, 2025*
+*January 2026*
 
 ---
 
 ## Abstract
 
-The Eternal Seed is a novel economic primitive designed to transform recurring payments and subscriptions into **regenerative, yield-generating flows** — even in low or zero-yield environments.
+The Eternal Seed is a DeFi primitive that transforms recurring payments into perpetual, yield-generating flows.
 
-It combines:
-- **Fixed baseline retention** for perpetual compounding  
-- **Rolling decreasing treasury injections** for strong early growth  
-- **Behavioral forfeit flywheel** for consistency rewards (optional)
+Traditional payment systems let money drain away. No compounding. No shared upside. The Eternal Seed fixes this by retaining a percentage of every payment forever, creating a compounding pool that, under normal operating conditions, can only grow.
 
-**Flagship application:** Lettery — a no-loss lottery with Pavlovian saver/gambler toggle.
+**Core Innovation:**
+- A set percentage of every payment retained forever
+- Retained funds compound via DeFi yield (Aave)
+- Behavioural incentives reward consistency, penalise inconsistency
+- Immutable contract. Treasury can only decrease. No backdoors.
+- Overflow mechanism seeds expansion into TradFi, government, and beyond
+- Designed for Web2 users. Web3 under the hood.
 
-By retaining a portion of inflows for perpetual compounding and recycling idle treasury liquidity through a rolling, decreasing injection system, the Eternal Seed creates self-sustaining growth even when external yields approach zero. This mechanism addresses the limitations of traditional banking (near-zero interest) and existing DeFi yield models (volatility and decay), enabling shared prosperity without risking principal.
+**Flagship Application:** Lettery. A no-loss lottery where ALL users buy tickets, enter draws, and earn yield. Features a Pavlovian saver/gambler toggle with Personal Rollover (V2) and on-chain inheritance.
 
-Using Lettery as a demonstration (a no-loss lottery with behavioral incentives), we explore applications in payments, subscriptions, SaaS, insurance, pensions, and beyond. The Eternal Seed promotes consistency, reduces churn, and unlocks new revenue models, positioning it as a foundational tool for the future of finance.
+**Broader Applications:** Subscriptions, insurance, pensions, SaaS, DAO treasuries. Anywhere recurring payments flow.
+
+**Result:** A retained pool floor that only rises. Today's seed becomes tomorrow's fortune.
+
+*Note: Not immune to smart contract risk, protocol exploits, or stablecoin depegs. See Risk Assessment section.*
 
 ---
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [The Eternal Seed Mechanism](#the-eternal-seed-mechanism)
-3. [Example Application: Lettery](#example-application-lettery)
-4. [Benefits for Payments, Subscriptions, and SaaS](#benefits-for-payments-subscriptions-and-saas)
-5. [Broader Applications](#broader-applications)
-6. [Challenges and Future Work](#challenges-and-future-work)
-7. [Conclusion](#conclusion)
+2. [Why The Seed Changes Everything](#why-the-seed-changes-everything)
+3. [The Eternal Seed Mechanism](#the-eternal-seed-mechanism)
+4. [Immutable Design and Treasury Sunset](#immutable-design-and-treasury-sunset)
+5. [V1.3: Fixed Seed Implementation](#v13-fixed-seed-implementation)
+6. [V2 Roadmap: Automated Treasury Management](#v2-roadmap-automated-treasury-management)
+7. [Example Application: Lettery](#example-application-lettery)
+8. [The Pavlovian Toggle and Personal Rollover (V2)](#the-pavlovian-toggle-and-personal-rollover-v2)
+9. [Broader Applications](#broader-applications)
+10. [Risk Assessment](#risk-assessment)
+11. [Challenges and Future Work](#challenges-and-future-work)
+12. [Conclusion](#conclusion)
 
 ---
 
 ## Introduction
 
-In today's financial landscape, recurring payments and subscriptions represent a massive, untapped opportunity for innovation. The global digital subscription economy exceeds **$650 billion annually**, while remittances, utilities, and other recurring flows add **trillions more**. Yet, most of these flows sit idle in low- or zero-yield accounts, benefiting banks or platforms rather than users.
-
 ### The Problem
 
-**Traditional Finance:**
-- Savings accounts: 0-1% APY
-- Recurring payments extract value rather than create it
-- Users bear all risks, platforms capture all upside
+**Traditional Lotteries:**
+- Jackpot won. 100% paid out. Pot resets to ZERO.
+- Start over every time.
+- No compounding. No shared upside.
+
+**Traditional Payments and Subscriptions:**
+- Money drains away. No compounding. No shared upside.
+- Users bear all costs. Platforms capture all value.
+- Near-zero interest in savings accounts.
 
 **Existing DeFi Solutions:**
-- PoolTogether: Relies on external yield (struggles in sub-2% APY environments)
-- Yield farming: High volatility, unsustainable subsidies
-- Prize savings: Limited adoption, complex onboarding
+- PoolTogether relies on external yield. Struggles when rates drop.
+- Yield farming has high volatility. Unsustainable.
+- Complex onboarding excludes mainstream users. Payment abstraction solves this.
 
 ### The DYBL Solution
 
-The Eternal Seed mechanism changes this paradigm. Born from behavioral psychology and DeFi principles, it recycles idle liquidity into a compounding engine that grows shared value over time. 
+The Eternal Seed changes the paradigm.
 
-Unlike static yield farming or subsidized lotteries, the Eternal Seed uses:
-1. **Fixed retention rate** (e.g., 45% of prize pot never paid out)
-2. **Adaptive treasury injections** (high early, decreasing over time)
-3. **Behavioral forfeits** (broken streaks feed the system)
+1. **Every payment feeds the seed.** A percentage is retained forever.
+2. **Seed never leaves.** Winners paid from prize pool. Seed untouched.
+3. **Seed earns yield.** Compounded via Aave.
+4. **Rollovers grow it.** Unwon jackpots stay in pot.
+5. **Forfeits feed it.** Inconsistent users lose yield to the community.
+6. **Immutable rules.** Treasury can only decrease. No backdoors.
+7. **Overflow expands it.** When metrics hit, overflow seeds new pots globally.
 
-This ensures **exponential early growth** and **long-term sustainability** — regardless of external market conditions.
+Designed for Web2 users. Web3 under the hood.
+
+No DeFi knowledge required. Just pay, play, and watch the pot grow.
+
+---
+
+## Why The Seed Changes Everything
+
+### Traditional Lottery
+
+- Jackpot won. Pot equals zero. Start over.
+- Players wait months for jackpot to rebuild.
+- No floor. No momentum.
+
+**If Traditional Lottery Had a Seed:**
+- Jackpot won. Seed stays. Pot rebuilds from higher floor.
+- Next jackpot starts bigger.
+- Players stay engaged.
+
+### PoolTogether
+
+- Prize equals Aave yield only.
+- Low yield means tiny prizes. Users leave.
+- No buffer. No floor.
+
+**If PoolTogether Had a Seed:**
+- Low yield? Seed still compounds.
+- Prizes have a floor regardless of rates.
+- Would have survived the bear market.
+
+### DYBL
+
+- Has the seed.
+- Has the floor.
+- Has the injection mechanism (V2).
+- Has the overflow expansion mechanism.
+- Built to survive what killed the others.
 
 ---
 
 ## The Eternal Seed Mechanism
 
-At its core, the Eternal Seed is a self-sustaining yield engine that operates without external subsidies or high base rates. It consists of three key components:
+### How It Works
 
-### 1. Fixed Baseline Retention
+Every payment flows through this split:
 
-A predefined percentage (e.g., **45%**) of the prize pot is retained in the shared vault indefinitely. This ensures perpetual compounding, even if underlying yields (e.g., from Aave or Compound) drop to 0.5–1%.
-
-**Example:**
-- Weekly prize pot: $100,000
-- Payout: 55% = $55,000 distributed to winners
-- Retention: 45% = $45,000 stays in pot forever
-- Over time, this $45,000 earns yield and compounds
-
-**Key Insight:** Even at 0% external yield, the pot still grows from new ticket sales + retention. External yield is a bonus, not a requirement.
-
-### 2. Rolling Decreasing Seed from Idle Treasury Liquidity
-
-Early in the protocol's lifecycle, a portion of idle treasury reserves (built from initial fees, e.g., 35% take split into operating and gift reserves) is injected into the main pot weekly. This starts high and decreases gradually (e.g., 5% reduction per week), accelerating growth in the ramp-up phase.
-
-**Math:**
 ```
-Seed Amount = (Prize Pot + Treasury Reserves) × Eternal Seed BPS / 10000
-
-Example:
-- Prize Pot: $100,000
-- Treasury: $50,000  
-- Eternal Seed BPS: 500 (5%)
-- Seed Injection: ($100K + $50K) × 5% = $7,500
+$3 Ticket Purchase
+│
+├── Prize Pot (in Aave)
+│   ├── Prize Pool (paid to winners)
+│   └── Eternal Seed (NEVER LEAVES)
+│
+└── Treasury
+    ├── Giveaway Reserve (cashback, rewards)
+    └── Operations
 ```
 
-This $7,500 is withdrawn from treasury and added to the pot, where it compounds forever. As the treasury naturally decreases (approaching 0% take after a set period), injections taper off automatically — **no governance needed**.
+*Note: All percentages are configurable at deployment.*
 
-**Timeline:**
-- **Year 1:** High injections (5% weekly) → Pot grows 20-50% faster
-- **Year 2:** Medium injections (2-3% weekly) → Stabilizing growth  
-- **Year 3+:** Low/zero injections → Mature, self-reliant system
+### Why The Seed Can Only Grow (Under Normal Conditions)
 
-As treasury sunsets to 0%, the system transitions from **subsidized growth** to **pure organic compounding**.
+**Growth Sources:**
 
-### 3. Behavioral Forfeit Flywheel (Optional Enhancement)
+| Source | Effect |
+|--------|--------|
+| **New tickets** | Every payment adds to seed |
+| **Aave yield** | Seed earns proportional yield |
+| **Jackpot rollover** | No 6/6 winner? Stays in pot |
+| **Tier rollover** | No winners at tier? Stays in pot |
+| **Forfeit yield** | Broken streaks. 50% to pot |
 
-Inconsistent participants (e.g., users who miss weekly payments) forfeit a share of their accrued yield:
-- **50% to treasury** (funds operations/giveaways)
-- **50% to prize pot** (bigger jackpots for consistent savers)
+**What Happens When Someone Wins:**
 
-**Example:**
-- User has $10 in accrued yield
-- Breaks streak by missing a week
-- Forfeits $10: $5 to treasury, $5 to pot
-- Rewards reliability, fuels compounding, never risks principal
+- Winner gets paid from the prize pool portion.
+- The seed portion is NEVER paid out.
+- Seed stays. Pot rebuilds. Floor rises.
 
-This creates a positive externality: Your loss becomes community gain.
+**Traditional Lottery:**
+Jackpot won. Pot equals zero. Start over.
+
+**Eternal Seed:**
+Jackpot won. Seed stays. Floor never drops to zero. Compounding continues.
 
 ---
 
-### Simulation Example
+## Immutable Design and Treasury Sunset
 
-Consider a 52-week simulation with:
-- Initial pot: $100,000
-- Weekly inflows: $10,000 (ticket sales)
-- Base APR: 5% (Aave yield)
-- Retention: 45% (never paid out)
-- Treasury injection: $5,000/week, decreasing 5% weekly
+### Trustless by Design
 
-**Results:**
-- **Week 1:** Pot = $107,500 (inflows + yield + seed)
-- **Week 26:** Pot = $250,000 (compounding accelerating)
-- **Week 52:** Pot = $450,000 (mature system)
+The Eternal Seed contract is immutable. No admin can change the core rules after deployment.
 
-Without Eternal Seed (traditional lottery):
-- **Week 52:** Pot = $180,000 (60% smaller)
+**What's locked forever:**
+- USDC address
+- Aave pool address
+- Chainlink VRF coordinator
+- Deploy timestamp
 
-**The Eternal Seed amplifies growth 2.5x in Year 1**, then stabilizes for perpetual sustainability.
+**What can ONLY move in one direction:**
+- Payout percentage can only INCREASE (better for users)
+- Treasury take can only DECREASE (eventually to zero)
+
+No backdoors. No rug pulls. Code is law.
+
+### Treasury Sunset and Overflow Mechanism
+
+Treasury take is configured at deployment and decreases over time. Here's how:
+
+**Phase 1: Early Growth**
+- Treasury takes configured slice of each ticket
+- Funds operations and giveaway reserves
+- Pot grows from remaining allocation
+
+**Phase 2: Cap/Metrics Achieved**
+- When configured cap or metrics are hit, treasury STOPS taking from frontend
+- 100% of new tickets flow to pot
+- Overflow begins
+
+**Phase 3: Overflow Distribution**
+- Overflow splits are immutable: Savers, Treasury, Charity
+- Overflow is monitored
+- As overflow grows, it seeds NEW pots for broader applications
+
+**The Timeline:**
+
+Early phase: Treasury takes configured slice.
+Cap/metrics hit: Treasury stops taking from frontend.
+Overflow begins: Splits to Savers, Treasury, Charity (immutable).
+Forever: Overflow grows, seeds new pots.
+
+This is not a promise. It's coded into the contract. Immutable.
+
+---
+
+*Footnote on Overflow:*
+
+*When cap/metrics are achieved, treasury stops taking from new tickets. Overflow begins. Overflow splits are immutable: Savers, Treasury, Charity.*
+
+*As overflow grows, it seeds new pots for broader applications: TradFi integrations, government programmes, pensions, utilities.*
+
+*Lettery is the proof of concept. Overflow is the expansion mechanism. The Eternal Seed becomes infrastructure.*
+
+---
+
+## V1.3: Fixed Seed Implementation
+
+### Current Architecture
+
+**Revenue Split (Per Ticket):**
+- Configured percentage to Prize Pot
+  - Prize Pool (to winners)
+  - Eternal Seed (retained forever)
+- Configured percentage to Treasury
+  - Giveaway Reserve
+  - Operations
+
+*All percentages configurable at deployment.*
+
+**Yield Allocation:**
+- Seed yield credited to Prize Pot (materialised weekly)
+- User yield available to users (withdraw or gamble with)
+- Treasury yield funds operations
+
+**Key Features:**
+- All users buy tickets to participate
+- Chainlink VRF for provably fair draws
+- Aave V3 for yield generation
+- Withdrawal lock period (prevents gaming)
+- Mulligan system (one free missed week per year)
+- Legacy Mode (on-chain inheritance)
+- Immutable core. One-way treasury changes only.
+
+### V1.3 Changelog
+
+- Removed depositSavings(). All users must buy tickets to participate.
+- Clarified saver/gambler mechanics (V2 feature).
+- Honest risk assessment added.
+- Seed yield materialisation implemented.
+
+---
+
+## V2 Roadmap: Automated Treasury Management
+
+V2 introduces real-time, automated injection and withdrawal between treasury and prize pot.
+
+### The Goal
+
+The Giveaway Reserve is over-funded in early phases. Only a portion gets paid out. Idle capital could work harder for the pot.
+
+V2 Solution: Automated injection from treasury to pot when needed. Withdrawal back when stable.
+
+### Option A: Chainlink Automation Only
+
+| Component | How It Works |
+|-----------|--------------|
+| **Monitor** | Chainlink Automation watches pot size |
+| **Rules** | Fixed thresholds (configured at deployment) |
+| **Execute** | Chainlink Automation calls inject/withdraw function |
+| **Frequency** | Constant. Configurable. |
+
+**Pros:**
+- Works today
+- One integration
+- Fully automated and trustless
+
+**Cons:**
+- Fixed rules don't adapt to external conditions
+- Thresholds set at launch, never change
+
+### Option B: Truflation + Chainlink Automation
+
+| Component | Who Does It |
+|-----------|-------------|
+| **Data** | Truflation (inflation, competitor rates, economic signals) |
+| **Logic** | Smart contract (thresholds adjust based on Truflation data) |
+| **Execute** | Chainlink Automation (calls function when conditions met) |
+
+**Or (Novel Use Case):**
+
+| Component | Who Does It |
+|-----------|-------------|
+| **Monitor** | Truflation watches pot health directly (like it watches inflation) |
+| **Trigger** | Truflation signals when injection or withdrawal needed |
+| **Execute** | Chainlink Automation executes transaction |
+
+**Pros:**
+- Smart rules that adapt to real-world conditions
+- Thresholds adjust for inflation, competitor rates, economic context
+- Novel use case for Truflation. DeFi protocol health monitoring.
+
+**Cons:**
+- Two integrations required
+- More complex implementation
+- New territory for Truflation
+
+### V2 Summary
+
+| Approach | Rules | Adapts? |
+|----------|-------|---------|
+| **Chainlink Automation only** | Fixed thresholds | No |
+| **Truflation + Chainlink** | Dynamic thresholds | Yes. Responds to real world. |
+
+V1.3 launches with manual triggers. V2 adds Chainlink Automation for full automation.
 
 ---
 
 ## Example Application: Lettery
 
-Lettery serves as a flagship demonstration of the Eternal Seed in action, blending it with gamification for a no-loss lottery.
+Lettery is the flagship demonstration of the Eternal Seed. A no-loss lottery where everyone plays, everyone earns, and the pot can only grow.
 
 ### How It Works
 
 **User Journey:**
-1. Buy a $3 "ticket" (in USDC)
-2. Choose: **Save** (100% yield) or **Play** (50% yield, chance to win jackpot)
-3. All $3 flows into Aave vault (earning ~5-9% APY)
-4. Weekly Chainlink VRF draw from 42-character meme alphabet
-5. Winners share 55% of pot, 45% compounds forever
+1. Buy a ticket (USDC)
+2. Pick 6 unique characters from 42-character meme alphabet
+3. Ticket funds flow to Aave (earning yield)
+4. Weekly Chainlink VRF draw
+5. Winners share prize pool. Seed stays forever.
 
-### The Pavlovian Toggle
-
-**Savers:**
-- Don't enter weekly draw
-- Get 100% of their proportional yield
-- Build long-term wealth, no risk
-
-**Gamblers:**
-- Enter weekly draw
-- Get 50% of their proportional yield (rest forfeited to pot/treasury)
-- Chance to win big jackpot
-
-This **conditions users toward saving** while feeding the Eternal Seed for bigger shared upside.
-
-### Weekly Draw Mechanics
-
-**42-Character Meme Alphabet:**
+**The Meme Alphabet (42 Characters):**
 ```
 A-Z (26 letters) + 0-9 (10 digits) + !@#$%& (6 special) = 42 symbols
 ```
 
-**Chainlink VRF** draws 6 unique characters each week (e.g., "A7#X!2")
+**Prize Tiers (from Prize Pool):**
 
-**Prize Tiers:**
-- 6/6 matches: 40% of 55% payout
-- 5/6 matches: 25%
-- 4/6 matches: 20%
-- 3/6 matches: 10%
-- 2/6 matches: 5%
+| Tier | Match | Share of Weekly Payout |
+|------|-------|------------------------|
+| 1 | 6/6 (Jackpot) | Configured %. Rolls over if no winner. |
+| 2 | 5/6 | Configured % |
+| 3 | 4/6 | Configured % |
+| 4 | 3/6 | Configured % |
+| 5 | 2/6 | Configured % |
 
-**Community Week (Quarterly):**
-- 1/6 match wins free ticket
-- Viral growth mechanism
+**Key Rule:** Users win at their BEST tier only. No double-dipping.
 
-### Loyalty Rewards
+### Why Jackpot Size Matters
 
-**Savers (perfect streak):**
-- Year 1: 10% cashback (USDC)
-- Year 2: 15% cashback
-- Year 3: 20% cashback
+Most people play lotteries for the big jackpot.
 
-**Gamblers:**
-- Year 1: 5% cashback (free tickets)
-- Year 2: 7.5% cashback
-- Year 3: 10% cashback
+Traditional lottery: Jackpot resets to zero after win. Back to small prizes.
 
-This rewards consistency and long-term participation.
+Eternal Seed: Jackpot has a FLOOR. Even after payout, seed ensures minimum pot size. Jackpots start bigger. Grow faster. Attract more players.
+
+Big jackpot means more players. More players means more tickets. More tickets means bigger seed. Bigger seed means even bigger jackpot.
+
+### User Protections
+
+**Withdrawal Lock:**
+Prevents hit-and-run yield farming. Encourages genuine participation.
+
+**Mulligan:**
+One free missed week per year (after eligibility period). Life happens. We don't punish humans for being human.
+
+**Yield Transparency:**
+All yield calculations on-chain. Users see exactly what they've earned.
 
 ### Legacy Mode
 
-After 2 years of consistent saving:
-- Set an **heir** (on-chain)
-- If inactive for 10 years, heir can claim your balance + yield
-- **Generational wealth transfer coded into DeFi**
+After eligibility period of consistent play:
+- Set an heir (on-chain)
+- If inactive for claim period, heir can claim balance plus yield
+- Unclaimed after expiry? Funds go to pot and treasury
+
+Generational wealth transfer. Coded into DeFi.
 
 ---
 
-## Benefits for Payments, Subscriptions, and SaaS
+## The Pavlovian Toggle and Personal Rollover (V2)
 
-The Eternal Seed offers transformative advantages across these sectors, turning static transactions into dynamic, value-creating flows.
+The saver/gambler toggle is a V2 feature. It appears Week 2 when users have yield to make a choice about.
 
-### 1. Higher Effective Yields for Users
+### The Personal Rollover
 
-**Traditional:** Bank savings = 0-1% APY  
-**Fintech:** High-yield savings (Aave) = 5-9% APY  
-**DYBL:** Base yield + Eternal Seed compounding = **20-50% boost in Year 1**
+This is the core behavioural mechanism.
 
-No extra risk — just smarter capital allocation.
+Every week, consistent players must press a button: their Personal Rollover.
 
-### 2. Reduced Churn and Increased Retention
+Two choices:
+- **SAVE:** Roll my yield into savings (cash at end of year)
+- **GAMBLE:** Roll my yield into extra tickets (more chances to win)
 
-The forfeit flywheel rewards consistency. For SaaS platforms like Spotify/Netflix:
-- Users who maintain subscriptions earn yield on their payments
-- Missed payments = forfeited yield
-- Behavioral studies suggest **10-15% reduction in churn**
+The act of pressing conditions behaviour. You're not passively earning. You're actively choosing. Every single week.
 
-### 3. Shared Prosperity and Network Effects
+This is Pavlov in action. The button becomes habit. The habit becomes saving.
 
-Pooled funds create communal upside — every payment grows the pot for all participants.
+### How It Works
 
-**Example: Remittances**
-- $1 trillion global remittances annually
-- If 10% used DYBL: $100B pooled, earning ~$5-9B/year in yield
-- Shared among senders/receivers, reducing effective transfer costs
+**ALL USERS:**
+Pay for ticket. Get ticket. Enter draw. Earn yield.
+Everyone plays. Everyone has a chance to win.
 
-### 4. Revenue Model Innovation for Platforms
+**SAVERS (consistent, choose cash rewards):**
+- Play full year (perfect streak)
+- Press SAVE on Personal Rollover each week
+- 100% yield paid as end-of-year cashback (USDC)
+- 100% loyalty cashback
+- Maximum rewards for maximum consistency
 
-Early treasury takes (e.g., 35% initially, decreasing to 0%) fund:
-- Operations (Chainlink fees, infrastructure)
-- Giveaways (loyalty rewards, cashback)
+**GAMBLERS (consistent, choose ticket rewards):**
+- Play full year (perfect streak)
+- Press GAMBLE on Personal Rollover each week
+- 100% yield converted to extra tickets through the year
+- Reduced loyalty cashback
+- More chances to win. Less guaranteed cash.
 
-Platforms can offer **yield-linked subscription tiers**:
-- Basic: Standard service
-- Premium: Standard + share of pooled yield
-- No price increase needed — just smarter economics
+**INCONSISTENT PLAYERS:**
+- Miss weeks. Break streak. Forfeit yield.
+- Portion of forfeited yield to Prize Pot
+- Portion of forfeited yield to Treasury
+- Their loss feeds the Eternal Seed
 
-### 5. Resilience in Low-Yield Environments
+### Why The Game Favours Savers
 
-Unlike yield-dependent models (PoolTogether), the Eternal Seed thrives on:
-- **Inflows** (new payments)
-- **Retention** (compounding baseline)
-- **Recycling** (treasury injections)
+By design.
 
-In bear markets or zero-rate environments, the pot **still expands** from retained portions and forfeits.
+Savers get MORE rewards than gamblers:
+- Same yield (100%)
+- More cashback (100% versus reduced)
 
-### 6. Regulatory and UX Advantages
+**The psychology:**
+1. Gambler thinks: I want more tickets to win big!
+2. Gambler sees: Savers getting full cashback plus same yield value
+3. Gambler realises: Maybe saving IS better.
+4. Gambler becomes: Saver
 
-**Non-gamified versions avoid gambling regulations:**
-- Pure savings pools (no lottery element)
-- Yield distribution based on consistency
-- Transparent on-chain accounting
+Over time, gamblers convert to savers. More consistent players. Healthier pot. Better for everyone.
 
-**Composable with fiat ramps:**
-- Stripe crypto payments
-- Circle USDC on/off ramps
-- Seamless for Web2 users
+### Why Personal Rollover Matters
+
+It's not just about the reward. It's about the action.
+
+Every week you press that button, you're reinforcing behaviour. You're making a conscious choice about your financial future. Save or gamble. Compound or spend.
+
+Most people, most weeks, will press SAVE. Because seeing that growing balance feels good. Because choosing saving becomes automatic.
+
+That's the Pavlov Toggle. That's the Personal Rollover. That's behavioural finance coded into DeFi.
 
 ---
 
 ## Broader Applications
 
-Beyond payments, subscriptions, and SaaS, the Eternal Seed primitive extends to:
+The Eternal Seed works anywhere recurring payments flow.
 
-### Insurance Premiums
-- Monthly premiums pool into Eternal Seed vault
-- Consistent payers get higher returns on unused premiums
-- Growing reserves cover claims over time
+### Without Prize Element (Pure Yield):
 
-### Pensions & Retirement
-- Contributions compound via Eternal Seed
-- Guaranteed growth even in low-yield environments
-- Behavioral incentives for consistent saving
+**Subscriptions and SaaS:**
+Monthly payments compound collectively. Consistent subscribers earn yield. Reduces churn. Increases retention.
 
-### Utilities & Bills
-- Monthly electricity/water bills earn shared yield
-- Reduces effective costs for low-income users
-- Creates financial inclusion
+**Insurance Premiums:**
+Premiums pool into Eternal Seed vault. Consistent payers earn on unused premiums. Growing reserves cover claims.
 
-### DAO Treasuries & Memberships
-- Membership dues compound collectively
-- Forfeits fund community initiatives
-- Self-sustaining governance budgets
+**Pensions and Retirement:**
+Contributions compound via Eternal Seed. Guaranteed growth floor (under normal conditions). Behavioural incentives for consistent saving.
 
-### Real-World Asset (RWA) Tokenization
-- Apply to tokenized Treasuries, bonds, real estate
-- Auto-compounding dividends via Eternal Seed
-- Perpetual yield for token holders
+**DAO Treasuries:**
+Membership dues compound collectively. Forfeits fund community initiatives. Self-sustaining governance budgets.
 
-### Cross-Chain Expansions
-- Use Chainlink CCIP for multi-chain pools
-- Global liquidity, seamless UX
-- Unlock DeFi for emerging markets
+### With Prize Element (Gamified):
 
-The Eternal Seed's modularity invites endless adaptations across any recurring payment vertical.
+**Remittances:**
+Send money home plus enter draw. Seed grows from global flows. Makes remittances exciting.
+
+**Utilities:**
+Pay bills plus earn yield plus win prizes. Reduces effective costs. Financial inclusion.
+
+### The Common Thread
+
+Every application benefits from:
+- Retained capital (seed)
+- Compounding yield
+- Behavioural incentives
+- Growing floor
+- Overflow expansion mechanism
+
+The primitive is universal. Lettery is just the proof of concept.
+
+---
+
+## Risk Assessment
+
+### Honest Evaluation
+
+This is experimental DeFi. The following risks exist:
+
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| **Smart contract vulnerability** | High | Professional audit (Cyfrin). Formal verification. |
+| **Aave protocol exploit** | High | Monitor Aave security. Emergency procedures. |
+| **USDC depeg** | Medium | Diversified stablecoin support (future). |
+| **Chainlink VRF failure** | Medium | Timeout resets. Manual fallback. |
+| **Low Aave liquidity** | Medium | Liquidity checks. Rescue patterns. |
+| **Regulatory uncertainty** | Medium | Legal review. Non-prize versions for restricted regions. |
+
+### What "Pot Can Only Grow" Actually Means
+
+Under normal operating conditions, the pot floor only rises because:
+- Seed is never paid out
+- Yield compounds
+- Rollovers accumulate
+- Forfeits feed the pot
+
+This does NOT mean immune to:
+- Smart contract bugs
+- Protocol exploits
+- Stablecoin depegs
+- Catastrophic market events
+
+We are honest about risks. No false promises.
 
 ---
 
@@ -315,112 +533,125 @@ The Eternal Seed's modularity invites endless adaptations across any recurring p
 
 ### Regulatory Clarity
 
-**Challenge:** Prize elements in some jurisdictions may trigger gambling regulations.
+**Challenge:** Prize elements may trigger gambling regulations in some jurisdictions.
 
-**Mitigation:**
-- Pure savings pools (no prize element) for restricted regions
-- Legal review in target markets (US, EU, Asia)
-- Transparent disclosures, age verification
+**Approach:**
+- Pure yield versions (no prize) for restricted regions
+- Legal review in target markets
+- Transparent disclosures
 
-### UX Friction
+### UX for Web2 Users
 
-**Challenge:** Onboarding non-crypto users (wallets, gas fees, USDC).
+**Challenge:** Wallets, gas fees, USDC onboarding.
 
 **Solutions:**
 - Account abstraction (gasless transactions)
+- Payment abstraction (fiat in, crypto out, user never knows)
 - Fiat on-ramps (Stripe, Circle)
-- Mobile-first design (Claude Code for native apps)
-
-### Volatility Risks
-
-**Challenge:** USDC depeg or Aave exploit.
-
-**Mitigation:**
-- Diversified stablecoin support (USDC, DAI, USDT)
-- Insurance protocols (Nexus Mutual integration)
-- Emergency migration paths (documented in contract)
+- Mobile-first design
+- Feels like Web2. Powered by Web3.
 
 ### Optimal Parameters
 
-**Challenge:** What's the ideal retention rate? Seed BPS? Treasury split?
+**Challenge:** What's the ideal seed percentage? Treasury split? Injection thresholds?
 
-**Future Work:**
-- Agent-based modeling (simulate millions of scenarios)
-- A/B testing in testnet phase
-- Community governance (post-launch)
+**Approach:**
+- Start with conservative defaults
+- Monitor real-world performance
+- Adjust based on data
 
-### Audit & Security
+### Audit and Security
 
-**Critical:** Smart contract must be bulletproof.
+**Status:** V1.3 is audit-ready.
 
 **Plan:**
-- Professional audit (Cyfrin, Chainlink Labs, Aave Companies)
-- Formal verification (runtime properties)
+- Professional audit (Cyfrin or Chainlink ecosystem)
+- Formal verification
 - Bug bounty program (post-mainnet)
 
 **Timeline:**
-- Q1 2026: Audit preparation ✅
-- Q2 2026: Professional audit
-- Q3 2026: Mainnet launch (post-audit only)
+- Audit preparation complete
+- Professional audit next
+- Mainnet launch post-audit only
 
 ---
 
 ## Conclusion
 
-The Eternal Seed reimagines payments and subscriptions as sources of shared, sustainable growth. By compounding retained inflows and recycling idle liquidity, it creates a future where every recurring dollar works harder — for users, platforms, and society.
+The Eternal Seed is a new DeFi primitive. Not just another lottery.
 
-**Key Takeaways:**
+**Key Points:**
 
-1. **Novel Primitive:** The Eternal Seed is a new DeFi building block, not just another lottery
-2. **Self-Sustaining:** Growth doesn't depend on high yields or subsidies
-3. **Behavioral Economics:** Pavlovian toggle conditions users toward long-term wealth building
-4. **Broad Applications:** Works for any recurring payment (lotteries, insurance, pensions, SaaS, utilities)
-5. **Generational Impact:** Legacy Mode enables on-chain inheritance and wealth transfer
+1. **Universal Mechanism.** Works for any recurring payment.
+2. **Self-Sustaining.** Growth from retention plus yield plus forfeits.
+3. **Immutable Rules.** Treasury can only decrease. No backdoors.
+4. **Behavioural Design.** Personal Rollover conditions users toward saving.
+5. **Overflow Expansion.** When metrics hit, overflow seeds new pots globally.
+6. **Web2 Ready.** Designed for mainstream users. Not DeFi degens.
+7. **Honest About Risks.** No false promises. Transparent assessment.
+8. **Generational Impact.** Legacy Mode enables on-chain inheritance.
 
-Lettery demonstrates the Eternal Seed's gamified potential, but the primitive shines brightest in pure yield applications. As DeFi goes mainstream, the Eternal Seed could become a standard mechanism, unlocking **trillions in untapped value** from idle recurring payments.
+Lettery demonstrates the gamified potential. The overflow mechanism expands it globally. The Eternal Seed becomes infrastructure for the future of finance.
 
----
-
-## Important Note on Parameters
-
-All parameters presented in this paper (e.g., 10% retention, 55% weekly payout, initial treasury take, injection amounts) are **draft examples for the V1 research prototype**. They are explicitly **not final** and will be refined through:
-
-- Detailed simulations and modeling  
-- Professional audit feedback  
-- Partner and community input  
-
-One key goal of collaboration with Chainlink, Cyfrin, and Aave is to finalize sustainable, fair economics together.
+Today's seed becomes tomorrow's fortune.
 
 ---
 
-## References & Further Reading
+## Technical Specifications
 
-- **Chainlink VRF:** [Verifiable Random Function Documentation](https://docs.chain.link/vrf/v2/introduction)
-- **Aave V3:** [Lending Protocol Documentation](https://docs.aave.com/developers/getting-started/readme)
-- **PoolTogether:** [Prize Savings Protocol](https://docs.pooltogether.com/)
-- **Behavioral Economics:** *Nudge* by Richard Thaler and Cass Sunstein
-- **DeFi Primitives:** *How to DeFi* by CoinGecko
+### Smart Contract
+
+- **Language:** Solidity ^0.8.24
+- **Dependencies:** Chainlink VRF, Aave V3, OpenZeppelin
+- **License:** BUSL 1.1. Becomes MIT after configured date.
+
+### Parameters
+
+All parameters are configurable at deployment:
+- Ticket Price
+- Prize Pot Share
+- Seed Portion
+- Treasury Share
+- Giveaway Reserve
+- Operations Share
+- Withdrawal Lock Period
+- Mulligan Eligibility Period
+- Cap/Metrics Thresholds
+- Overflow Splits
+
+### Immutable vs One-Way
+
+| Parameter | Type |
+|-----------|------|
+| USDC address | Immutable |
+| Aave pool address | Immutable |
+| VRF coordinator | Immutable |
+| Deploy timestamp | Immutable |
+| Overflow splits | Immutable |
+| Payout percentage | One-way: can only INCREASE |
+| Treasury take | One-way: can only DECREASE |
+
+### Repository
+
+- **GitHub:** [github.com/DYBL777/DYBL-v1](https://github.com/DYBL777/DYBL-v1)
+- **Current Version:** Lettery_AuditReady_v1.3.sol
 
 ---
 
 ## About DYBL Foundation
 
-DYBL (Decentralised Yield Bearing Legacy) was created by an independent inventor, therapist, and blockchain researcher with 8 years of study in DeFi mechanisms and behavioral economics. 
-
-While caring for an 84-year-old mother, the founder dedicated thousands of hours to reading whitepapers, studying protocols, and designing novel economic primitives — culminating in the Eternal Seed mechanism.
+DYBL (Decentralised Yield Bearing Legacy) was created by an independent inventor, therapist, and blockchain researcher with 8 years of study in DeFi mechanisms and behavioural economics.
 
 **Mission:** Transform recurring payments into wealth-building tools accessible to everyone.
 
 **Vision:** A future where every subscription, bill, and payment grows shared prosperity.
 
-**Values:** 
+**Values:**
 - No token
-- No governance (immutable rules)
+- No governance capture
 - No pre-mine
-- No VC capture
-- No rug pulls
-
-Just pure innovation, open-source code, and a commitment to building something that lasts forever.
+- No VC extraction
+- Just pure innovation and a commitment to building something that lasts forever
 
 ---
 
@@ -428,17 +659,14 @@ Just pure innovation, open-source code, and a commitment to building something t
 
 - **GitHub:** [github.com/DYBL777](https://github.com/DYBL777)
 - **Email:** dybl7@proton.me
-- **Twitter/X:** [@DYBL777](https://twitter.com/DYBL777) *(if you have one)*
 
 ---
 
-**Let's build the future of finance.**
-
-**DYBL777**  
-*January 1, 2026*
+**DYBL Foundation**  
+*January 2026*
 
 ---
 
-**Version:** 1.0 (Draft for Audit Preparation)  
-**License:** Creative Commons BY-NC-SA 4.0  
-**Status:** Open for feedback from Chainlink, Cyfrin, and Aave partners
+**Version:** 1.3 (Audit-Ready)  
+**License:** BUSL 1.1. Becomes MIT after configured date.  
+**Status:** Seeking audit from Cyfrin or Chainlink ecosystem
