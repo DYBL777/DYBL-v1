@@ -1,3 +1,4 @@
+> ⚠️ **Note:** This whitepaper is being updated to reflect V1.3 changes. Core mechanism unchanged.
 # The Eternal Seed: A Sustainable Compounding Mechanism for Yield-Bearing Payments & Subscriptions
 
 **DYBL Foundation**  
