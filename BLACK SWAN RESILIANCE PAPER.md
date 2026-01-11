@@ -22,7 +22,7 @@ This document outlines **initial recovery considerations** for extreme scenarios
 ## Important Disclaimers
 
 - These are **conceptual recovery paths**, not implemented code
-- Final approaches will be **co-designed with partners** (Chainlink, Cyfrin, Aave, security researchers)
+- Final approaches will be **co-designed with partners**
 - We do not claim these solutions are complete or optimal
 - Some scenarios may have **better alternatives** we haven't considered
 - User fund preservation is the **goal**, not a guarantee
