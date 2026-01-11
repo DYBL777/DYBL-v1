@@ -65,9 +65,7 @@ If too late: funds may be partially or fully lost
 
 **Possible Backup Protocols:**
 - Compound V3
-- Morpho Blue
-- Spark Protocol
-- Other audited lending protocols
+- Morpho Blue (with "newer" caveat)
 
 **Honest Assessment:**
 - If exploit detected early, migration may preserve funds
