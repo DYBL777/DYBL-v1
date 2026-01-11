@@ -4,7 +4,6 @@
 
 **DYBL Foundation**
 *January 2026*
-*Version 1.2*
 
 ---
 
